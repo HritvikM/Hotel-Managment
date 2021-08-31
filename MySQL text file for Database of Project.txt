@@ -1,0 +1,340 @@
+Drop database IF Exists Indana_Palace;
+
+Create Database Indana_Palace;
+
+use Indana_Palace;
+
+Create Table Id(
+USERID Varchar(100),
+First_Name Varchar(100),
+Last_Name Varchar(100),
+Password Varchar(100),
+Email Varchar(100),
+ID_Type Varchar(40),
+Mobile_No Varchar(100),
+If_Admin Boolean,
+Security_ques Varchar(100),
+Answer Varchar(40),
+Primary Key(USERID)
+);
+
+Insert Into Id Values("mathurhritvik","Hritvik","Mathur","aayush2002","hritvikmathur@gmail.com","Staff","9549548930", true, 'What is your favorite food?', 'Momos');
+Insert Into Id Values("shreyanshtiwari","Shreyansh","Tiwari","shreyansh2002","shreyanshngp11i@gmail.com","Staff","7230085345",true, 'Who is your favourite Singer/Band?', 'Taylor Swift');
+Insert Into Id Values("thechiragmathur","Chirag","Mathur","Arronstone","mchirag2002@gmail.com","Staff","7726843098",false, 'What was your Favourite Cartoon?', 'Noddy');
+Insert Into Id Values("madhavbohra","Madhav","Bohra","nachoo","madhavbohra@gmail.com","Customer","9414132553", false, 'What city were you born in?', 'Jodhpur');
+Insert Into Id Values("pogozsuper","Aditya","Bohra","pogo2002","pogozsuper@gmail.com","Customer","9351204396", false, 'What was the Name of your first Pet?','Pokemon');
+
+Create Table Cust(
+USERID Varchar(100) Primary Key,
+First_Name Varchar(100),
+Last_Name Varchar(100),
+email Varchar(100),
+Mobile_No Varchar(100),
+Gender Varchar(6),
+Address Varchar(100),
+Nationality Varchar(50),
+DOB date,
+CHECK((YEAR(SYSDATE())-YEAR(DOB))>16),
+FOREIGN KEY(USERID) REFERENCES ID(USERID) 
+ON DELETE CASCADE
+On UPDATE CASCADE
+);
+
+Insert into Cust Values("madhavbohra","Madhav","Bohra", "madhavbohra@gmail.com", "9414132553", "Male", "17th-E Sector C.H.B.", "India", "1976-02-03");
+Insert into Cust Values("pogozsuper","Aditya","Bohra", "pogozsuper@gmail.com", "9351204396", "Male", "11 Sector C.H.B.", "India", "1985-09-05");
+
+Create Table Staff(
+USERID Varchar(100) Primary Key,
+First_Name Varchar(100),
+Last_Name Varchar(100),
+Email Varchar(100),
+Mobile_No Varchar(100),
+Dept Varchar(40),
+If_Admin Boolean,
+Gender Varchar(6),
+Address Varchar(60),
+Nationality Varchar(40),
+DOB date,
+CHECK((YEAR(SYSDATE())-YEAR(DOB))>16),
+constraint fk_staff FOREIGN KEY(USERID) REFERENCES ID(USERID) 
+ON DELETE CASCADE
+On UPDATE CASCADE
+);
+
+Insert Into Staff Values("shreyanshtiwari","Shreyansh","Tiwari", "shreyanshngp11i@gmail.com", "7230085345", "Owner", true, "Male", "142, Aadinath Nagar", "India", "1985-03-04");
+Insert Into Staff Values("mathurhritvik","Hritvik","Mathur","hritvikmathur@gmail.com","9549548930","Owner",true, "Male", "5k16,3rd puliya,C.H.B", "India","1992-03-22");
+Insert Into Staff Values("thechiragmathur","Chirag","Mathur","mchirag2002@gmail.com","7726843098","Manager",true,"Male","23 Sector C.H.B.","India","1975-03-21");
+
+create table stocks(
+Item_no Int(4),
+Item_name Varchar(40),
+Measuring_quantity varchar(10),
+Quantity double(8,2),
+price_perUnit Double(8,2)
+);
+
+Insert into stocks values( 1,"Paneer","kg",15,320);
+Insert into stocks values( 2,"Yogurt","kg",5,150);
+Insert into stocks values( 3,"Pepper","kg",1,100);
+Insert into stocks values( 4,"Salt","kg",1,100);
+Insert into stocks values( 5,"Olive Oil","l",5 ,350);
+Insert into stocks values( 6,"Ghee","l",10 ,600);
+Insert into stocks values( 7,"Onions","kg",10 ,80);
+Insert into stocks values( 8,"Table Spoon","unit",150,10);
+Insert into stocks values( 9,"Soup Bowl","unit",80,20);
+Insert into stocks values( 10,"L - Plates","unit",90,25);
+Insert into stocks values( 11,"Bowls","unit",68,12);
+
+Create Table Tbl1(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl2(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl3(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl4(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl5(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl6(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl7(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl8(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl9(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Tbl10(
+Dish Varchar(30),
+Price Double(8,2),
+Type varchar(40),
+Category varchar(60),
+Delivered boolean
+);
+
+Create Table Menu(
+Dish Varchar(60),
+price double(8,2),
+type varchar(60),
+category varchar(100)
+);
+
+
+INSERT INTO MENU VALUES(“French Fries”,100,”Snacks”,"Fast Food");
+INSERT INTO MENU VALUES(“Chilli Cheese Toast ”,100,”Snacks”,"Fast Food");
+INSERT INTO MENU VALUES(“Garlic Toast”,100,”Snacks”,"Fast Food");
+INSERT INTO MENU VALUES(“Garlic Bread with Cheese”,120,”Snacks”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese Balls”,120,”Snacks”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Plain Sandwich ”,100,” Sandwiches”,"Fast Food");
+INSERT INTO MENU VALUES(“Grilled Sandwich”, 120,” Sandwiches”,"Fast Food");
+INSERT INTO MENU VALUES(“Club Sandwich”, 130,” Sandwiches”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese Sandwich”,120,” Sandwiches”,"Fast Food");
+INSERT INTO MENU VALUES(“Paneer Sandwich”,150,” Sandwiches”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Tomato Soup”,150,”Soups”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Manchow Soup”,150,”Soups”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Hot and Sour”,150,"Soups”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Italian Soup”,150,”Soups”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Sweetcorn Soup”,150,”Soups”,"Starters and Soups");
+
+INSERT INTO MENU VALUES(“Onion Capsicum Pizza”,180,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Plain Cheese Pizza”,100,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Paneer Supreme Pizza”,220,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Veggie Italiano Pizza”,180,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese Pizza Pizza”,150,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Margherita Pizza”,190,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Classic Tomato Pizza”,120,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Classic Corn Pizza”,180,”Pizza”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese Burst Pizza”,180,”Pizza”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Cheese Burger”,180,”Burger”,"Fast Food");
+INSERT INTO MENU VALUES(“Veg Burger”,180,”Burger”,"Fast Food");
+INSERT INTO MENU VALUES(“Grilled Burger”,180,”Burger”,"Fast Food");
+INSERT INTO MENU VALUES(“Paneer Supreme Burger”,180,”Burger”,"Fast Food");
+INSERT INTO MENU VALUES(“Maharaja Burger”,180,”Burger”,"Fast Food");
+INSERT INTO MENU VALUES(“White Penne Pasta”,200,”Pasta”,"Fast Food");
+INSERT INTO MENU VALUES(“Red Penne Pasta”,200,”Pasta”,"Fast Food");
+INSERT INTO MENU VALUES(“Pasta Spicy Tomato”,200,”Pasta”,"Fast Food");
+INSERT INTO MENU VALUES(“Classical Cheese”,200,”Pasta”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese Lasagna”,200,”Pasta”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Veg Momos”,80,”Momos”,"Fast Food");
+INSERT INTO MENU VALUES(“Cheese & Corn Momos”,80,”Momos”,"Fast Food");
+INSERT INTO MENU VALUES(“Paneer Momos”,80,”Momos”,"Fast Food");
+INSERT INTO MENU VALUES(“Fried Veg Momos”,80,”Momos”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Plain Aloo Tikki”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Spring Roll”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Chilli Paneer Dry”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Veg. Manchurian Dry”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Potatoes in Honey & Chilly”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Chilly Mushroom Dry”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Paneer Tikka”,220,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Hara-Bhara Kebab”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Dragon Potato”,180,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Spring Rolls”,120,”Starters”,"Starters and Soups");
+INSERT INTO MENU VALUES(“Cheese Tacos”,220,”Starters”,"Starters and Soups");
+
+INSERT INTO MENU VALUES(“Shahi Paneer”,300,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Kadhai Paneer”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Paneer Butter Masala”,280,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Palak Paneer”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Paneer Kofta”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Paneer Makhani”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Tawa Paneer Masala”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“paneer Lababdar”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Malai Kofta”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Mix Veg”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Aloo Gobi”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Aloo Pyaz”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Nargishi Kofta Masala”,250,“Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Loki Kofta”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Kofta Ras Malai”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Kaju Butter Masala”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Stuffed Capssicum Masala”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Navratna Korma”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Tomato Corn Bharta”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Baby Corn”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Bhindi Masala”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Vegetable Mirchi Kola”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Kadi”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Sev Tamatar Subzi”,250,”Indian Cuisines”,"Main Course");
+INSERT INTO MENU VALUES(“Karela Subzi”,250,”Indian Cuisines”,"Main Course");
+
+INSERT INTO MENU VALUES(“Dal Makhani”,220,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Tadka”,200,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Fry”,200,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Tomato”,180,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Kasturi”,150,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Adkari”,200,”Dal”,"Main Course");
+INSERT INTO MENU VALUES(“Dal Kolhapuri”,200,”Dal”,"Main Course");
+
+INSERT INTO MENU VALUES(“Missi Roti”,20,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tawa Roti”,10,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tawa Butter Roti”,15,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tandoori Roti”,20,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tandoori Butter Roti”,30,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Naan”,30,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Butter Naan”,40,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tandoori Naan”,40,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Plain Tandoori Butter Naan”,45,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Stuffed Naan”,50,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Garlic Naan”,50,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Shahi Naan”,80,”Breads”,"Main Course");
+INSERT INTO MENU VALUES(“Lachcha Paratha”,30,”Breads”,"Main Course");
+
+INSERT INTO MENU VALUES(“Rabri”,80 ,”Special”,"Desserts and Beverages");
+INSERT INTO MENU VALUES(“Kulfi”,80 ,”Special”,"Desserts and Beverages");
+INSERT INTO MENU VALUES(“Lassi”,80 ,”Special”,"Desserts and Beverages");
+INSERT INTO MENU VALUES(“Mawe ki Kachori”,80 ,”Special”,"Desserts and Beverages");
+
+INSERT INTO MENU VALUES(“Haka Noodles”,150 ,”Noodles”,"Fast Food");
+INSERT INTO MENU VALUES(“Chowmein”,150 ,”Noodles”,"Fast Food");
+INSERT INTO MENU VALUES(“Maagie”,150 ,”Noodles”,"Fast Food");
+INSERT INTO MENU VALUES(“Chinese Noodles”,150 ,”Noodles”,"Fast Food");
+
+INSERT INTO MENU VALUES(“Rawa Dosa”,150 ,”South Indian”,"Main Course");
+INSERT INTO MENU VALUES(“Rawa masala Dosa”,180 ,”South Indian”,"Main Course");
+INSERT INTO MENU VALUES(“Idli Sambar”,170 ,”South Indian”,"Main Course");
+INSERT INTO MENU VALUES(“Uthapam”,150 ,”South Indian”,"Main Course");
+INSERT INTO MENU VALUES(“Sambar Vada”,170 ,”South Indian”,"Main Course");
+
+INSERT INTO MENU VALUES("Riesling",1500,"Drinks","Wines");
+INSERT INTO MENU VALUES("Gewürztraminer",1400,"Drinks","Wines");
+INSERT INTO MENU VALUES("Riesling1",1100,"Drinks","Wines");
+INSERT INTO MENU VALUES("Chardonnay",1600,"Drinks","Wines");
+INSERT INTO MENU VALUES("Riesling",1500,"Drinks","Wines");
+INSERT INTO MENU VALUES("Sauvignon blanc",1500,"Drinks","Wines");
+INSERT INTO MENU VALUES("Chardonnay100",1700,"Drinks","Wines");
+INSERT INTO MENU VALUES("Syrah",1500,"Drinks","Wines");
+INSERT INTO MENU VALUES("Riesling50",1800,"Drinks","Wines");
+INSERT INTO MENU VALUES("Riesling100",1500,"Drinks","Wines");
+INSERT INTO MENU VALUES("Merlot",1600,"Drinks","Wines");
+INSERT INTO MENU VALUES("Pinot noir",1500,"Drinks","Wines");
+
+Create table booked(
+user varchar(40),
+method varchar(20),
+tablfor int(10),
+from1 varchar(10),
+to1 varchar(10),
+Date date
+);
+
+insert into booked values ('madhavbohra', 'card', 5, '11:00hrs', '15:00hrs', '2019-12-25');
+insert into booked values ('pogozsuper', 'card', 3, '16:00hrs', '20:30hrs', '2019-12-13');
+insert into booked values ('thechiragmathur', 'card', 2, '18:00hrs', '21:00hrs', '2020-01-01');
+
+create table bills(
+user varchar(40),
+price double(8,2),
+method varchar(40)
+);
+
+Insert into bills values ('madhavbohra',8265.50,'Credit');
+Insert into bills values ('pogozsuper',3754.60,'Credit');
+Insert into bills values ('madhavbohra',3250.50,'Credit');
+
+
+
+
+
+
+
+
+
+
